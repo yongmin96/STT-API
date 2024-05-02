@@ -73,47 +73,6 @@ Speech to Text Example!!!
 		recognition.interimResults = false; 
 		recognition.maxAlternatives = 5; 
 		//recognition.continuous = true;
-
-		function speech_to_text(){ 
-			recognition.start(); 
-			isRecognizing = true;
-			recognition.onstart = function(){
-				console.log("음성인식이 시작 되었습니다. 이제 마이크에 무슨 말이든 하세요.");
-				message.innerHTML = "음성인식 시작..."; 
-				button.innerHTML = "Listening..."; 
-				button.disabled = true; 
-			}
-			
-			recognition.onspeechend = function(){
-				message.innerHTML = "버튼을 누르고 아무말이나 하세요.";
-				button.disabled = false;
-				button.innerHTML = "Start STT"; 
-			}
-            
-			recognition.onresult = function(event) {
-				console.log('You said: ', event.results[0][0].transcript);
-				// 결과를 출력
-				var resText = event.results[0][0].transcript;
-				korea.innerHTML = resText;
-				//text to sppech 
-				text_to_speech(resText); 
-			};
-            
-			recognition.onend = function(){ 
-				message.innerHTML = "버튼을 누르고 아무말이나 하세요.";
-				button.disabled = false;
-				button.innerHTML = "Start STT";
-				isRecognizing = false;
-			}
-		}
-		
-		function stop(){
-			recognition.stop();
-			message.innerHTML = "버튼을 누르고 아무말이나 하세요.";
-			button.disabled = false;
-			button.innerHTML = "Start STT";
-			isRecognizing = false;
-		}
 	</script>
 </body> 
 </html>
